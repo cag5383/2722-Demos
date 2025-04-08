@@ -1,0 +1,84 @@
+{
+  "version": "2025.0",
+  "waypoints": [
+    {
+      "anchor": {
+        "x": 7.302878289473683,
+        "y": 2.399
+      },
+      "prevControl": null,
+      "nextControl": {
+        "x": 7.046064746812504,
+        "y": 2.4760330978336857
+      },
+      "isLocked": false,
+      "linkedName": "B4"
+    },
+    {
+      "anchor": {
+        "x": 5.562295081967213,
+        "y": 2.5325307377049184
+      },
+      "prevControl": {
+        "x": 5.7280339257790525,
+        "y": 2.345366009051481
+      },
+      "nextControl": {
+        "x": 5.128990749339039,
+        "y": 3.0218504769736554
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 5.1786885245901635,
+        "y": 3.1678790983606553
+      },
+      "prevControl": {
+        "x": 5.348472030894467,
+        "y": 2.9228347142034834
+      },
+      "nextControl": null,
+      "isLocked": false,
+      "linkedName": "F"
+    }
+  ],
+  "rotationTargets": [],
+  "constraintZones": [
+    {
+      "name": "Constraints Zone",
+      "minWaypointRelativePos": 1.1019581363943267,
+      "maxWaypointRelativePos": 2.0,
+      "constraints": {
+        "maxVelocity": 0.5,
+        "maxAcceleration": 0.5,
+        "maxAngularVelocity": 540.0,
+        "maxAngularAcceleration": 720.0,
+        "nominalVoltage": 12.0,
+        "unlimited": false
+      }
+    }
+  ],
+  "pointTowardsZones": [],
+  "eventMarkers": [],
+  "globalConstraints": {
+    "maxVelocity": 1.0,
+    "maxAcceleration": 1.0,
+    "maxAngularVelocity": 540.0,
+    "maxAngularAcceleration": 720.0,
+    "nominalVoltage": 12.0,
+    "unlimited": false
+  },
+  "goalEndState": {
+    "velocity": 0,
+    "rotation": -59.99999999999999
+  },
+  "reversed": false,
+  "folder": "Barge to Reef",
+  "idealStartingState": {
+    "velocity": 0,
+    "rotation": 0.0
+  },
+  "useDefaultConstraints": true
+}

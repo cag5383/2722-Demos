@@ -1,0 +1,68 @@
+{
+  "version": "2025.0",
+  "waypoints": [
+    {
+      "anchor": {
+        "x": 5.28,
+        "y": 4.942059426229508
+      },
+      "prevControl": null,
+      "nextControl": {
+        "x": 3.552837058399424,
+        "y": 6.2126524327183335
+      },
+      "isLocked": false,
+      "linkedName": "I"
+    },
+    {
+      "anchor": {
+        "x": 1.48,
+        "y": 7.25
+      },
+      "prevControl": {
+        "x": 1.9450602085126105,
+        "y": 6.37493111377041
+      },
+      "nextControl": null,
+      "isLocked": false,
+      "linkedName": "RFS1"
+    }
+  ],
+  "rotationTargets": [],
+  "constraintZones": [
+    {
+      "name": "Constraints Zone",
+      "minWaypointRelativePos": 0.7049291019581403,
+      "maxWaypointRelativePos": 1.0,
+      "constraints": {
+        "maxVelocity": 1.0,
+        "maxAcceleration": 1.0,
+        "maxAngularVelocity": 540.0,
+        "maxAngularAcceleration": 720.0,
+        "nominalVoltage": 12.0,
+        "unlimited": false
+      }
+    }
+  ],
+  "pointTowardsZones": [],
+  "eventMarkers": [],
+  "globalConstraints": {
+    "maxVelocity": 3.5,
+    "maxAcceleration": 3.5,
+    "maxAngularVelocity": 540.0,
+    "maxAngularAcceleration": 720.0,
+    "nominalVoltage": 12.0,
+    "unlimited": false
+  },
+  "goalEndState": {
+    "velocity": 0,
+    "rotation": 126.87817499041417
+  },
+  "reversed": false,
+  "folder": "Reef to FS",
+  "idealStartingState": {
+    "velocity": 0,
+    "rotation": 58.8
+  },
+  "useDefaultConstraints": false
+}

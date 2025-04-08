@@ -1,0 +1,46 @@
+{
+  "robotWidth": 0.7366,
+  "robotLength": 0.7366,
+  "holonomicMode": true,
+  "pathFolders": [
+    "Barge to Reef",
+    "FS to Reef",
+    "Leave-OTW-Push",
+    "Path to Paths",
+    "Reef to FS"
+  ],
+  "autoFolders": [
+    "1 Coral",
+    "1 Coral and Feed",
+    "2 Coral",
+    "LEAVE",
+    "Constraint Zone Testing"
+  ],
+  "defaultMaxVel": 1.0,
+  "defaultMaxAccel": 1.0,
+  "defaultMaxAngVel": 540.0,
+  "defaultMaxAngAccel": 720.0,
+  "defaultNominalVoltage": 12.0,
+  "robotMass": 50.213,
+  "robotMOI": 1.464,
+  "robotTrackwidth": 0.546,
+  "driveWheelRadius": 0.041,
+  "driveGearing": 5.08,
+  "maxDriveSpeed": 4.46,
+  "driveMotorType": "NEO",
+  "driveCurrentLimit": 40.0,
+  "wheelCOF": 1.2,
+  "flModuleX": 0.273,
+  "flModuleY": 0.273,
+  "frModuleX": 0.273,
+  "frModuleY": -0.273,
+  "blModuleX": -0.273,
+  "blModuleY": 0.273,
+  "brModuleX": -0.273,
+  "brModuleY": -0.273,
+  "bumperOffsetX": 0.0,
+  "bumperOffsetY": 0.0,
+  "robotFeatures": [
+    "{\"name\":\"Rectangle\",\"type\":\"rounded_rect\",\"data\":{\"center\":{\"x\":-0.14,\"y\":0.0},\"size\":{\"width\":0.6731,\"length\":0.0508},\"borderRadius\":0.05,\"strokeWidth\":0.02,\"filled\":false}}"
+  ]
+}

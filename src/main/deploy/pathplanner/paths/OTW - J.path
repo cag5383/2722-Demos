@@ -1,0 +1,54 @@
+{
+  "version": "2025.0",
+  "waypoints": [
+    {
+      "anchor": {
+        "x": 4.91,
+        "y": 5.17
+      },
+      "prevControl": null,
+      "nextControl": {
+        "x": 4.525131578947369,
+        "y": 5.920493421052632
+      },
+      "isLocked": false,
+      "linkedName": "J"
+    },
+    {
+      "anchor": {
+        "x": 4.162114726027397,
+        "y": 7.563548801369863
+      },
+      "prevControl": {
+        "x": 4.056481153195789,
+        "y": 6.991966270167956
+      },
+      "nextControl": null,
+      "isLocked": false,
+      "linkedName": "Top - Out The Way"
+    }
+  ],
+  "rotationTargets": [],
+  "constraintZones": [],
+  "pointTowardsZones": [],
+  "eventMarkers": [],
+  "globalConstraints": {
+    "maxVelocity": 1.0,
+    "maxAcceleration": 1.0,
+    "maxAngularVelocity": 540.0,
+    "maxAngularAcceleration": 720.0,
+    "nominalVoltage": 12.0,
+    "unlimited": false
+  },
+  "goalEndState": {
+    "velocity": 0,
+    "rotation": 1.0809241866607404
+  },
+  "reversed": false,
+  "folder": "Leave-OTW-Push",
+  "idealStartingState": {
+    "velocity": 0,
+    "rotation": 61.34365367064706
+  },
+  "useDefaultConstraints": true
+}
