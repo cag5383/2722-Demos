@@ -37,6 +37,9 @@ public class RobotContainer {
         private final LEDAdapter m_led;
         private final Vision m_vision;
 
+        // CAG: set to true for SwerveBasics example:
+        private boolean usingSwerveDefaults = false;
+
         /**
          * The container for the robot. Contains subsystems, OI devices, and commands.
          */
@@ -69,24 +72,19 @@ public class RobotContainer {
                 DriverController.DPadUp.whileTrue(new RunCommand(() -> m_robotDrive.DriveForward(.5), m_robotDrive));
 
 
-                
+
                 // Configure default commands
-                /*
-                 * m_robotDrive.setDefaultCommand(
-                 * // The left stick controls translation of the robot.
-                 * // Turning is controlled by the X axis of the right stick.
-                 * new RunCommand(
-                 * () -> m_robotDrive.drive(
-                 * DriverController.LeftStickY.getAsDouble()
-                 * Math.abs(DriverController.LeftStickY.getAsDouble()),
-                 * DriverController.LeftStickX.getAsDouble()
-                 * Math.abs(DriverController.LeftStickX.getAsDouble()),
-                 * DriverController.RightStickX.getAsDouble()
-                 * Math.abs(DriverController.RightStickX.getAsDouble()),
-                 * true,
-                 * DriverController.LeftBumper.getAsBoolean()),
-                 * m_robotDrive));
-                 */
+                //Default commands avoid the need for a trigger that 'activates' the command.
+                //The subsystem assumes the command should be running unless something else is using the subsystem.
+                if (usingSwerveDefaults){
+                        m_robotDrive.setDefaultCommand(
+                        new RunCommand(
+                                () -> m_robotDrive.driveRobotRelative(
+                                        DriverController.LeftStickY.getAsDouble(),
+                                        DriverController.LeftStickX.getAsDouble(),
+                                        DriverController.RightStickX.getAsDouble()),
+                        m_robotDrive));
+                  }
 
         }
 

@@ -1,4 +1,76 @@
+Coordinate systems are important, especially for swerve.
+This is because with a swerve drive, movement in 3 dimensions (forward, strafe, rotation)
+can be controlled indepdendently.
 
+Previous examples have only moved the robot in one direction at a time,
+which is simple, but not intuitive or practical.
+
+A more intuive solution involves parsing and using joystick inputs,
+which is what we're going to focus on here.
+
+The first way we'll use these inputs is to drive "Robot Relative"
+
+Robot relative is a coordinate system where the robot is 0,0.
+Forward is the front of the robot.
+Backwards is the back of the robot
+Positive strafe is Right
+Negative strafe is Left (CAG: I dont' actually know which way it is, but I think that's correct.)
+Positive rotation is clockwise looking from the top of the robot.
+Negative rotation is counter clockwise looking from the top of the robot.
+
+Part One: Robot Relative Example
+1. Things to Read:
+    DriveAdapter::driveRobotRelative
+    RobotContainer::configureDriverBindings
+
+2. An example is provided in RobotContainer::configureDriverBindings for mapping the
+    Left/Right Joysticks to provide three dimensions of inputs to the Drive Adapter.
+
+3. Exercise
+    In RobotContainer, usingSwerveDefaults is set to false.
+    Set this to true and test the robot relative controls. 
+
+4. Questions
+    How sensitive are the inputs? How smoothly does the robot accelerate?
+        Trying to get at squaring inputs, deadzones, and slewRates to make controls respond more intuitively.
+
+
+
+
+
+
+Part Two: Field-Relative Exercise
+
+Something that is complicated with Robot-Relative driving is that the driver and the robot don't have the same perspective.
+The driver is typically not moving, but the front of the robot is frequently moving,
+especially if we are doing complex motions involving turning and driving.
+
+A way to deal with this is to define an operator-centric coordinate system.
+    If the operator is one one of the alliance sides:
+        Forward is away from the operator and towards the opposing alliance.
+        Backward is towards the operator and away from the opposing alliance.
+        driving and turning Right are to the driver's right.
+        driving and turning left are both  to the driver's Left
+
+
+1. Things to Read
+    DriveAdapter::driveFieldRelative
+    DriveAdapter::configureInitialPosition
+
+2. In DriveAdapter::configureInitialPosition, there is an example of how you might check what alliance you are currently on.
+    In RobotContainer::configureDriverBindings, there is an example of setting the driveRobotRelative default command using
+    joystick inputs.
+
+3. Exercise
+    Can you set up a conditional that sets a different starting position for the Red and Blue Alliance?
+    The most important difference is the orientation, as red and blue alliance are typically oriented 180 degrees from one another.
+
+    Can you change the default command for DriveAdapter in RobotContainer::configureDriverBindings from driveRobotRelative to driveFieldrelative?
+
+
+4. Questions
+	Pros/Cons of Robot relative? What about Field relative?
+	What are examples of when you might want to use each?
 
 
 
