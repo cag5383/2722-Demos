@@ -9,7 +9,15 @@ import frc.robot.Constants.OperatorConstants;
 
 public class DriverController {
     public static final CommandXboxController m_operatorController = new CommandXboxController(OperatorConstants.kDriverControllerPort);
-    //CAG:What are the things we want to be able to do/check?
+
+    //CAG: this is the list of all the possible buttons that we might want to use on an XBox Controller.
+    //There's plenty of ways to use them, but generally they'll be either Triggers or Suppliers of some variety.
+    //Triggers are true or false and can be used to Trigger commands
+    //Suppliers can be used to pass along values - for example the coordinates of a joystick
+    // or how pressed a trigger button is.
+    //Suppliers can be used as inputs or passed to subsystems rather than triggering commands/events.
+
+    //The button type (Trigger/Supplier) is declared with a desriptive name.
     public static Trigger AButton;
     public static Trigger XButton;
     public static Trigger YButton;
@@ -28,15 +36,15 @@ public class DriverController {
     public static Trigger RightTrigger;
 
     public static Trigger DPadDown;
-    public static Trigger DPadDownLeft;
     public static Trigger DPadLeft;
-    public static Trigger DPadUpLeft;
     public static Trigger DPadUp;
-    public static Trigger DPadUpRight;
     public static Trigger DPadRight;
-    public static Trigger DPadDownRight;
 
     public DriverController(){
+        //Buttons
+        //CAG: Here we map the types and names to discrete behaviors on a controller.
+        //Buttons are typically digital (true/false) inputs.
+        // controller.a() returns whether that digital input is true (pressed) or false (unpressed)
         AButton = m_operatorController.a();
         XButton = m_operatorController.x();
         YButton = m_operatorController.y();
@@ -47,6 +55,10 @@ public class DriverController {
         Back = m_operatorController.back();
 
         //Sticks
+        //Sticks and triggers are typically Analog inputs - they provide a range of inputs rather than 
+        //true/false. For sticks, that range is typically represented as a coordinate between -1 and 1 in
+        // the X and Y direction.
+        //For a trigger button, that values is generally between 0 and 1.
         LeftStickX = () -> (m_operatorController.getLeftX());
         LeftStickY = () -> (m_operatorController.getLeftY());
 
@@ -54,21 +66,15 @@ public class DriverController {
         RightStickY = () -> (m_operatorController.getRightY());
 
         //Triggers
-        //CAG: I wonder if there's a way to get these to be continuous inputs instead of discrete.
-        //Right now it's true/false trigger based on whether the input is > threshold.
+        //These triggers are set up to return a true/false when they are pressed more than a threshold.
+        //In this case, more than 50% pressed.
         LeftTrigger = m_operatorController.leftTrigger(.5);
         RightTrigger = m_operatorController.rightTrigger(.5);
 
-        //CAG: I'm not sure I love this without testing how sensitive it is
-        //How well can it distinguish down-left from left?
-        //Maybe better to just poll the angle directly you can provide an angle).
+        //Direction Pad
         DPadDown =  m_operatorController.povDown();
-        DPadDownLeft = m_operatorController.povDownLeft();
         DPadLeft = m_operatorController.povLeft();
-        DPadUpLeft = m_operatorController.povUpLeft();
         DPadUp = m_operatorController.povUp();
-        DPadUpRight = m_operatorController.povUpRight();
         DPadRight = m_operatorController.povRight();
-        DPadDownRight = m_operatorController.povDownRight();
     }
 }

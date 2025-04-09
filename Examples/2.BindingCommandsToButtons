@@ -1,0 +1,39 @@
+There are four goals for this activity:
+    Understand how to set up joystick buttons as Triggers.
+    Understand how to use the LEDAdapter to change the LEDs
+    Understand how to use the DriveAdapter to drive the robot
+    Understand how to map subsystem commands to joystick buttons
+
+1. Things to Read:
+    BlinkIn/LEDAdapter.java
+    Drive/DriveAdapter::DriveForward
+    Drive/DriveAdapter::DriveStrafe
+    Drive/DriveAdapter::DriveTurn
+    JoystickConfigs/DriverController.java
+    RobotContainer::configureDriverBindings
+
+    Note: Above is shorthand that will be used consistently.
+    Class::Method is used to specify the need to review a particular method(s) within a class,
+    rather than the entirety.
+    For example, the first line above would mean that you need to go to the DriveAdapter.java file
+    and look for the DriveForward method.
+
+2. An example is provided in RobotContainer::configureDriverBindings for mapping a button press to:
+    a. Change the color of the LEDs to green when the A button is pressed.
+    b. Drive the robot forward when DPad Up is pressed.
+
+3. Exercise:
+    a. Can you use the B, X, and Y buttons to change the LEDs to other colors available in LEDAdapter.java?
+    b. Can you create the following additional drive commands and map them to the buttons specified below?
+        DPad Down: DriveForwards Backwards (negative) at 0.5 speed.
+        DPad Left: DriveStrafe Left (positive) at 0.5 speed
+        DPad Right: DriveStrafe Right (negative) at 0.5 speed
+        Left Bumper: DriveTurn Left (positive) at 0.5 speed
+        Right Bumper: DriveTurn Right (negative) at 0.5 speed
+
+4. Discussion
+    What is the difference between OnTrue versus WhileTrue for Triggers/Buttons?
+    What are examples of when you might want to use one over the other?
+    When you drive forward, which direction does the robot drive in?
+        Is forward towards the front of the robot or the front of the room?
+

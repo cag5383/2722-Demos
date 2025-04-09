@@ -222,7 +222,7 @@ public class DriveSubsystem extends SubsystemBase {
    * @param fieldRelative Whether the provided x and y speeds are relative to the
    *                      field.
    */
-  public void drive(double xSpeed, double ySpeed, double rot, boolean fieldRelative, boolean slowMode) {
+  public void drive(double forawrdSpeed, double strafeSpeed, double rotSpeed, boolean fieldRelative, boolean slowMode) {
     // CAG: How much of this math do we actually understand?
     // Have we tried using this to do robot-relative driving or only field-relative?
     // This may have been helpful when we briefly tried to do robot-relative
@@ -231,18 +231,18 @@ public class DriveSubsystem extends SubsystemBase {
     // didnt really work.
 
     // Convert the commanded speeds into the correct units for the drivetrain
-    double xSpeedDelivered = xSpeed * DriveConstants.kMaxSpeedMetersPerSecond;
-    double ySpeedDelivered = ySpeed * DriveConstants.kMaxSpeedMetersPerSecond;
-    double rotDelivered = rot * DriveConstants.kMaxAngularSpeed;
+    double xSpeedDelivered = forawrdSpeed * DriveConstants.kMaxSpeedMetersPerSecond;
+    double ySpeedDelivered = strafeSpeed * DriveConstants.kMaxSpeedMetersPerSecond;
+    double rotDelivered = rotSpeed * DriveConstants.kMaxAngularSpeed;
 
     if (slowMode) {
-      xSpeedDelivered = xSpeed * (DriveConstants.kMaxSpeedMetersPerSecond / 4);
-      ySpeedDelivered = ySpeed * (DriveConstants.kMaxSpeedMetersPerSecond / 4);
-      rotDelivered = rot * (DriveConstants.kMaxAngularSpeed / 4);
+      xSpeedDelivered = forawrdSpeed * (DriveConstants.kMaxSpeedMetersPerSecond / 4);
+      ySpeedDelivered = strafeSpeed * (DriveConstants.kMaxSpeedMetersPerSecond / 4);
+      rotDelivered = rotSpeed * (DriveConstants.kMaxAngularSpeed / 4);
     } else {
-      xSpeedDelivered = xSpeed * DriveConstants.kMaxSpeedMetersPerSecond;
-      ySpeedDelivered = ySpeed * DriveConstants.kMaxSpeedMetersPerSecond;
-      rotDelivered = rot * DriveConstants.kMaxAngularSpeed;
+      xSpeedDelivered = forawrdSpeed * DriveConstants.kMaxSpeedMetersPerSecond;
+      ySpeedDelivered = strafeSpeed * DriveConstants.kMaxSpeedMetersPerSecond;
+      rotDelivered = rotSpeed * DriveConstants.kMaxAngularSpeed;
     }
 
     var swerveModuleStates = DriveConstants.kDriveKinematics.toSwerveModuleStates(
