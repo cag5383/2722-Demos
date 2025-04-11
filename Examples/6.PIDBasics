@@ -1,0 +1,54 @@
+Feedback controllers (not joysticks) are commonly used to get subsystems into particular states and keep them in that state.
+    They are comprised of one or more sensors that measures the state of the system
+    and a controller that acts on the system to change its state.
+
+A commonplace example of a system with a controller is a Thermostat.
+A thermostat has a target temperature (a Setpoint).
+It measures the current temperature and compares it to that setpoint.
+If the current temperature is below the setpoint, the thermostat can increase the temperature by activating a heater.
+If the current temperature is above the setpoint, the thermostat can decrease the temperature by activating a cooler.
+
+The most common category of controller is a PID Controller. It is called PID because there are three components:
+    P is for proportional.
+    I is for Integral.
+    D is for Derivative.
+
+Each component has a measurement associated with it and a constant (Kp, Ki, and Kd respectively).
+The component's contribution to the controller response is the product of the measurement and the constant.
+
+The proportional component measures the current, instantaneous difference between the Setpoint and the measured state of the system.
+    For example: what is the temperature right now compared to what it is set to.
+    The bigger the current difference, the larger the proportional response.
+
+    Proportional-only control is when the other to components constants are zero and only the P constant is > 0.
+    Proportional only control can be slow, but is commonly good enough to get a system very close to a desired state.
+
+The integral component adds up errors over time and is typically much smaller than a proportional component.
+It is frequently used to add up small errors over time to get to a very precise final state.
+    For example: for every minute that the temperature is off by 1 degree, the integral controller response will increase
+    until the difference beteen the current state and desired state is reduced to zero.
+
+The derivative component measures how quickly the error is changing over time and is typically used to dampen disturbances.
+    For example - if someone opens a door and lets in cold air, a thermostat may detect that the temperature is starting to go down.
+    and start proactively running the heater. 
+
+
+
+Example: commands/PIDYaw.java
+    The purpose of this command is to try to use a controller to get the robot to square up on an AprilTag.
+
+Exercise 1:
+    Test how the controller/robot behave with only Kp > 0. Start with small Kp (~0.1?) and bind the command to a button.
+    Increase Kp until the controller is responsive.
+    Repeat with Ki and Kd.
+
+Exercise 2:
+    Try to tune the controller to quickly and accurately get Yaw to zero.
+
+    Start with only Kp. Increase until oscillation around the target is observed.
+        What are reasons this might not happen - slow mode/tolerance.
+
+    Add Kd - Kd should be ~1/5 of Kp to start - this should dampen the oscillation and help to settle more quickly.
+
+    Ki is less likely to be needed for "fast" actions - generally used to precisely maintain setpoints over "long" periods.
+        Long is relative, but our need for precision is generally not such that Ki is necessary.
