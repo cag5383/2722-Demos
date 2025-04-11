@@ -1,0 +1,40 @@
+Big note: only use single tags/cameras for this or it will be a nightmare.
+
+One of the most complex and powerful tool available to us as far as sensors go is robot vision.
+We most often use a limelight, which does a lot of the heavy lifting for us.
+
+One of the most common things that we use limelights for is to look for AprilTags. The limeight can be configured 
+to look for all tags, particular tags, or subsets of tags. The limelight analyzes the images seen by the camera in real-time
+looking for whichever tags or other targets it has been configured for. When it detects something, the Limelight will return
+basic information about where the tag is relative to the camera. Because those tags are generally placed near key positions
+on the field, we can then use those measurements to find specific coordinates or orientations relative to that tag.
+
+Alternatively, because the tags are in fixed and consistent positions on the field, you can use those measurements to calculate
+an estimated position on the field. These applications get more involved, and are a partial focus of the Odometry example.
+
+For this activity, we'll focus on some of the basic data provided by the limelight:
+    Which tags are visible and where they are relative to the robot.
+
+Read
+	Vision/Observations/TargetObservation.java
+    Vision/VisionAdapter.java
+    RobotContainer::periodic
+
+Example: 
+    RobotContainer::periodic is currently set up to periodically check the TargetData returned by the vision system.
+    If there are no tags, it will change the LEDs RED so that an operator can easily tell that no tags are visible.
+
+Exercise
+    Can you add a conditional to set the LEDs to Blue when the limelight sees any tag?
+    Can you add another conditional to set the LEDs to Green if the limelight sees a particular ID?
+
+Questions
+	Does the order of the checks in the previous step matter? Why/not?
+	Can you think of some reasons that vision measurements might vary in quality/precision?
+	What are ways that we might be able to account for those issues?
+		Rejection Criteria
+		Averages
+		STDDevs
+		Latency
+    How might this get confusing if there were more than one april tag in camera frame?
+    How might this get more complicated if there were more than one camera?

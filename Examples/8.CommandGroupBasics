@@ -1,0 +1,21 @@
+Part Two:
+    Command groups allow you to combine commands in different ways to build more complex
+    combinations and sequences of behaviors.
+
+    There are several types of command groups:
+        Sequential: Executes a list of commands, one at a time, in the specified order.
+        Parallel: Executes a list of commands, all in paralle, until all of the commands are finished.
+        Parallel Race: Executes a list of commands, all at once, until any one of the commands finishes.
+            Any remaining commands will be interrupted.
+        Parallel Deadline: Executes a list of commands, all at once, until a specified command finishes.
+            Any remaining commands will be interrupted.
+
+    If we have a well-tested baseline of simple commands that we understand very well, 
+    we can use command groups to combine them to create interesting and sophisticated behaviors.
+
+
+    Exercise:
+        Try adding the commands created in the previous step to example command groups in different orders and combinations.
+
+Part 3:
+    Changing finish conditions

@@ -35,7 +35,7 @@ public class RobotContainer {
         private final DriveAdapter m_robotDrive = new DriveAdapter();
         private final SendableChooser<Command> autoChooser;
         private final LEDAdapter m_led;
-        private final Vision m_vision;
+        private final VisionAdapter m_vision;
 
         // CAG: set to true for SwerveBasics example:
         private boolean usingSwerveDefaults = false;
@@ -45,7 +45,7 @@ public class RobotContainer {
          */
         public RobotContainer() {
                 m_led = new LEDAdapter();
-                m_vision = new Vision();
+                m_vision = new VisionAdapter();
 
                 // Configure the button bindings
                 configureDriverBindings();
@@ -98,6 +98,12 @@ public class RobotContainer {
         }
 
         public void periodic() {
+
+                //When a tag observation is created, the tagID is initialized to -1 and only updated to a positive value
+                //if a valid target is observed.
+                if (m_vision.currTagObservation.tagID == -1){
+                        m_led.red();
+                }
         }
 
         private void registerNamedCommands() {

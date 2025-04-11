@@ -23,8 +23,7 @@ public class Vision extends SubsystemBase {
 
     public Vision() {
         limelights = new ArrayList<>();
-        limelights.add(new Limelight("l_limelight"));
-        limelights.add(new Limelight("r_limelight"));
+        limelights.add(new Limelight("limelight"));
 
         poseObservations = new ArrayList<>();
         tagObservations = new ArrayList<>();
@@ -76,5 +75,14 @@ public class Vision extends SubsystemBase {
         for (Limelight l : limelights) {
             l.lock(tagID);
         }
+    }
+
+    public TagObservation getTargetObservations(){
+        return this.tagObservations.get(0);
+
+    }
+
+    public PoseObservation getPoseObservations(){
+        return this.poseObservations.get(0);
     }
 }

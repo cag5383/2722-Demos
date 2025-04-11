@@ -1,0 +1,62 @@
+Commands are a way to script actions that can be bound to buttons or combined into autonomous actions.
+
+Commands broadly have 4 components:
+    1. Initialize - Initialize is called once when the command first starts and is used to set up initial conditions.
+    2. Execute - Execute is called ~50 times per second, and is the discrete action the command is supposed to take
+        (e.g. drive a motor) to turn or drive the robot, move an arm, etc.
+    3. IsFinished - IsFinished is called ~50 times per second and is used to specify a condition that will end the command.
+        For example: a sensor reading hitting a threshold, a timer, etc.
+    4. End - End is called once when IsFinished is true and the command ends. This should be used to clean up any loose ends.
+        (e.g. stop the motors that Execute was driving).
+
+    Here's a quick example of how a command might be set up:
+        Initialize: start a timer.
+        Execute: Drive Forward
+        IsFinished: when the timer reaches 3 seconds.
+        End: nothing
+
+    What would you expect to happen if you run this command?
+
+Example:
+    commands/DriveForwardTimed.java is an example of exactly the command outlined above.
+    First read through the command.
+    Then try mapping that command to a joystick button (use WwileTrue) and test the command.
+
+Exercise
+    Try writing the following two commands by filling in the templates in the command folder.
+        commands/LEDsTimed.java
+            Initialize: start a timer
+            Execute: set the LEDs to your favorite rainbow pattern.
+            isFinished: when the timer reaches 5 seconds.
+            End: set the LEDs to Red.
+        RotateUntilTag.java
+            Initialize: nothing
+            Execute: DriveTurn either left or right.
+            isFinished: when any AprilTag is visible.
+            End: nothing.
+
+    Map each of these commands to joystick buttons (use WhileTrue).
+    How you expect each of these commands to behave?
+    What happens when you deploy and run them?
+
+Part 2:
+    Exercise: Can you update the IsFinished condition of RotateUntilTag.java
+        to end when the VisionAdapter sees a particular AprilTag rather than any AprilTag?
+
+Part 3:
+    It is frequently helpful to try to make command flexible commands as flexible as possible.
+    In the previous part, you created a command that looked for one specific AprilTag.
+    If we wanted to be able to look for other tags, we could write seperate commands
+    for each unique Tag we would like to look for.
+        (e.g. RotateUntilTag1, RotateUntilTag2, RotateUntilTag3, etc)
+
+    However, that is typically not the most effective approach -
+    Largely because now you have a sizeable number of commands that need to be tested and maintained as time goes on.
+
+    A more flexible approach would be to specify the tag that you are looking for as an input to the command constructor.
+        That way you have a single command that can be used to look for any tag.
+
+    Exercise:
+        Add an input to the RotateUntilTag.java and update the IsFinished condition to look for any specified input tag.
+        Try mapping RotateUntilTag to multiple buttons, each with a different tag specified as an input.
+

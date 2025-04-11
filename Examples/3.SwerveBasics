@@ -1,6 +1,9 @@
-Coordinate systems are important, especially for swerve.
+Coordinate systems are important, especially for swerve drive trains.
 This is because with a swerve drive, movement in 3 dimensions (forward, strafe, rotation)
 can be controlled indepdendently.
+
+Coordinate systems are also important for autonomous operation, because we need to be able get to particular
+positions and orientations on the field without operator input.
 
 Previous examples have only moved the robot in one direction at a time,
 which is simple, but not intuitive or practical.
@@ -42,6 +45,7 @@ Part One: Robot Relative Example
 Part Two: Field-Relative Exercise
 
 Something that is complicated with Robot-Relative driving is that the driver and the robot don't have the same perspective.
+Put another way, the intuitive answer for which direction is forward for the driver and the robot are not always the same.
 The driver is typically not moving, but the front of the robot is frequently moving,
 especially if we are doing complex motions involving turning and driving.
 
@@ -57,16 +61,16 @@ A way to deal with this is to define an operator-centric coordinate system.
     DriveAdapter::driveFieldRelative
     DriveAdapter::configureInitialPosition
 
-2. In DriveAdapter::configureInitialPosition, there is an example of how you might check what alliance you are currently on.
+2. Example
+In DriveAdapter::configureInitialPosition, there is an example of how you might check what alliance you are currently on.
     In RobotContainer::configureDriverBindings, there is an example of setting the driveRobotRelative default command using
     joystick inputs.
 
 3. Exercise
-    Can you set up a conditional that sets a different starting position for the Red and Blue Alliance?
+    Within DriveAdapter.java, update configureInitialPosition to set a different starting position for the Red and Blue alliance?
     The most important difference is the orientation, as red and blue alliance are typically oriented 180 degrees from one another.
 
     Can you change the default command for DriveAdapter in RobotContainer::configureDriverBindings from driveRobotRelative to driveFieldrelative?
-
 
 4. Questions
 	Pros/Cons of Robot relative? What about Field relative?
